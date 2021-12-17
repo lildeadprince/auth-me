@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./server
-          tags: ${{ env.GAR_BASE }}/auth-me-server:latest
+          tags: ${{ env.GAR_BASE }}/registry-1:latest
           push: true
-          cache-from: type=registry,ref=${{ env.GAR_BASE }}/auth-me-server:latest
+          cache-from: type=registry,ref=${{ env.GAR_BASE }}/registry-1:latest
           cache-to: type=inline
