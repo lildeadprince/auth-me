@@ -1,0 +1,46 @@
+{
+  "extends": [
+    "airbnb-base",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "eslint-plugin-import"
+  ],
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "no-use-before-define": [
+      "error",
+      {
+        "functions": false
+      }
+    ],
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "error",
+          "warn",
+          "table"
+        ]
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "next"
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "always",
+      {
+        "ignorePackages": true
+      }
+    ],
+    "import/prefer-default-export": [
+      0
+    ]
+  }
+}
