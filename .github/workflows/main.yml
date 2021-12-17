@@ -15,12 +15,24 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Push Docker Image to GAR
-        uses: par-tec/docker-push-gar-image@v0.0.3
+      - name: Login to GAR
+        uses: docker/login-action@v1
         with:
-          image_name: auth-me-server
-          docker_context: ./server
-          gar_hostname: europe-north1-docker.pkg.dev
-          gar_project: ${{ secrets.GAR_PROJECT_ID }} 
-          gar_service_account: ${{ secrets.GAR_SERVICE_KEY }}
-          tag_latest_version: true
+          registry: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}
+          username: _json_key
+          password: ${{ secrets.GAR_JSON_KEY }}
+          
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          target: release
+          tags: ${{ env.GAR_BASE }}/${{env.PROJECT_NAME}}/auth-me-server:latest
+          build-args: |
+            NODE_ENV=${{ env.NODE_ENV }}
+            REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}
+            SKIP_PREFLIGHT_CHECK=${{ env.SKIP_PREFLIGHT_CHECK }}
+            DISABLE_ESLINT_PLUGIN=${{ env.DISABLE_ESLINT_PLUGIN }}
+          push: true
+          cache-from: type=registry,ref=${{ env.GAR_BASE }}/auth-me-server:latest
+          cache-to: type=inline
