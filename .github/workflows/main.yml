@@ -19,7 +19,7 @@ jobs:
         uses: par-tec/docker-push-gar-image@v0.0.3
         with:
           image_name: auth-me-server
-          # docker_context: # default is ./
+          docker_context: ./server
           gar_hostname: europe-north1-docker.pkg.dev
           gar_project: ${{ secrets.GAR_PROJECT_ID }} 
           gar_service_account: ${{ secrets.GAR_SERVICE_KEY }}
