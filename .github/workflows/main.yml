@@ -1,0 +1,26 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Push Docker Image to GAR
+        uses: par-tec/docker-push-gar-image@v0.0.3
+        with:
+          image_name: auth-me-server
+          # docker_context: # default is ./
+          gar_hostname: europe-north1-docker.pkg.dev
+          gar_project: ${{ secrets.GAR_PROJECT_ID }} 
+          gar_service_account: ${{ secrets.GAR_SERVICE_KEY }}
+          tag_latest_version: true
