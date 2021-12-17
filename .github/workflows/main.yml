@@ -4,9 +4,12 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, dev ]
 
   workflow_dispatch:
+
+env:
+  GAR_BASE: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}
 
 jobs:
   build:
@@ -18,7 +21,7 @@ jobs:
       - name: Login to GAR
         uses: docker/login-action@v1
         with:
-          registry: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}
+          registry: ${{ env.GAR_BASE }}
           username: _json_key
           password: ${{ secrets.GAR_JSON_KEY }}
           
@@ -27,12 +30,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           target: release
-          tags: ${{ env.GAR_BASE }}/${{env.PROJECT_NAME}}/auth-me-server:latest
-          build-args: |
-            NODE_ENV=${{ env.NODE_ENV }}
-            REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}
-            SKIP_PREFLIGHT_CHECK=${{ env.SKIP_PREFLIGHT_CHECK }}
-            DISABLE_ESLINT_PLUGIN=${{ env.DISABLE_ESLINT_PLUGIN }}
+          tags: ${{ env.GAR_BASE }}/auth-me-server:latest
           push: true
           cache-from: type=registry,ref=${{ env.GAR_BASE }}/auth-me-server:latest
           cache-to: type=inline
