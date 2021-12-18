@@ -36,3 +36,11 @@ jobs:
           push: true
           cache-from: type=registry,ref=${{ env.GAR_BASE }}/${{ secrets.GAR_REGISTRY_NAME }}/auth-me-server:latest
           cache-to: type=inline
+
+      - name: Deploy to GCR
+        if: success() && github.ref == 'refs/heads/master'
+        uses: lildeadprince/auth-me/.github/workflows/deploy-grc.yml@dev
+        with:
+          imageName: auth-me-server:latest
+          service: auth-me-server-eu-west
+          region: ${{ secrets.GAR_REGION }}

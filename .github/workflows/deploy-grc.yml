@@ -3,8 +3,31 @@
 name: Deploy to Cloud Run
 
 on:
+  workflow_call:
+    inputs:
+      imageName:
+      service:
+        type: string
+        required: true
+      region:
+        type: string
+        required: true
+      suffix:
+        type: string
+    secrets:
+      GCP_PROJECT_ID:
+        type: string
+        required: true
+      GAR_REGISTRY_NAME:
+        type: string
+        required: true
+
+
   workflow_dispatch:
     inputs:
+      imageName:
+        description: 'Name of an image to deploy'
+        type: string
       service:
         description: 'Service ID'
         required: true
@@ -21,7 +44,10 @@ on:
         default: 'server-eu-west'
 
 env:
-  GAR_IMAGE: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GAR_REGISTRY_NAME }}/auth-me-server:latest
+  service: ${{ inputs.service || github.event.inputs.service }}
+  suffix: ${{ inputs.suffix || github.event.inputs.suffix }}
+  region: ${{ inputs.region || github.event.inputs.region }}
+  imageName: ${{ inputs.imageName || github.event.inputs.imageName }}
 
 jobs:
   build:
@@ -38,10 +64,10 @@ jobs:
         id: gcr_deploy
         uses: 'google-github-actions/deploy-cloudrun@v0'
         with:
-          service: ${{ github.event.inputs.service }}
-          suffix: ${{ github.event.inputs.suffix }}
-          region: ${{ github.event.inputs.region }}
-          image: ${{ env.GAR_IMAGE }}
+          service: ${{ env.service }}
+          suffix: ${{ env.suffix }}
+          region: ${{ env.region }}
+          image: {{ env.region }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GAR_REGISTRY_NAME }}/${{ env.imageName }}
 
       - name: Expose deployment URL
         run: echo '::set-output name=deployment_url::${{ steps.gcr_deploy.outputs.url }}'
