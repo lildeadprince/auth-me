@@ -3,26 +3,6 @@
 name: Deploy to Cloud Run
 
 on:
-  workflow_call:
-    inputs:
-      imageName:
-      service:
-        type: string
-        required: true
-      region:
-        type: string
-        required: true
-      suffix:
-        type: string
-    secrets:
-      GCP_PROJECT_ID:
-        type: string
-        required: true
-      GAR_REGISTRY_NAME:
-        type: string
-        required: true
-
-
   workflow_dispatch:
     inputs:
       imageName:
@@ -44,13 +24,13 @@ on:
         default: 'server-eu-west'
 
 env:
-  service: ${{ inputs.service || github.event.inputs.service }}
-  suffix: ${{ inputs.suffix || github.event.inputs.suffix }}
-  region: ${{ inputs.region || github.event.inputs.region }}
-  imageName: ${{ inputs.imageName || github.event.inputs.imageName }}
+  service: ${{ github.event.inputs.service }}
+  suffix: ${{ github.event.inputs.suffix }}
+  region: ${{ github.event.inputs.region }}
+  imageName: ${{ github.event.inputs.imageName }}
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
