@@ -31,15 +31,15 @@ jobs:
           username: _json_key
           password: ${{ secrets.GAR_JSON_KEY }}
 
-          - name: Build and push to GAR
-            id: docker_build_and_push
-            uses: docker/build-push-action@v2
-            with:
-              context: ./server
-              tags: ${{ env.imageName }}
-              push: true
-              cache-from: type=registry,ref=${{ env.imageName }}
-              cache-to: type=inline
+      - name: Build and push to GAR
+        id: docker_build_and_push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./server
+          tags: ${{ env.imageName }}
+          push: true
+          cache-from: type=registry,ref=${{ env.imageName }}
+          cache-to: type=inline
 
   deploy:
     runs-on: ubuntu-latest
