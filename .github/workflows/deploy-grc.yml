@@ -38,14 +38,14 @@ jobs:
       - name: View context attributes
         uses: actions/github-script@v5
         with:
-          script: console.log('${{inputs.service}}'.split('').join(' '))
+          script: console.log('${{github.event.inputs.service}}'.split('').join(' '))
 
       - name: Deploy latest at GCR
         id: gcr_deploy
         uses: 'google-github-actions/deploy-cloudrun@v0'
         with:
-          service: ${{ inputs.service }}
-          region: ${{ inputs.region }}
+          service: ${{ github.event.inputs.service }}
+          region: ${{ github.event.inputs.region }}
           image: ${{ env.GAR_BASE }}/${{ secrets.GAR_REGISTRY_NAME }}/auth-me-server:latest
 
       - name: Expose deployment URL
