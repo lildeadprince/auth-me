@@ -35,6 +35,11 @@ jobs:
         with:
           credentials_json: ${{ secrets.GAR_JSON_KEY }}
 
+      - name: View context attributes
+        uses: actions/github-script@v5
+        with:
+          script: console.log('${{inputs.service}}'.split('').join(' '))
+
       - name: Deploy latest at GCR
         id: gcr_deploy
         uses: 'google-github-actions/deploy-cloudrun@v0'
