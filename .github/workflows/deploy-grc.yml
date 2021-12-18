@@ -9,8 +9,12 @@ on:
         description: 'Service ID'
         required: true
       region:
+        type: choice
         description: 'Target deployment region'
         default: 'europe-west1'
+        options:
+          - europe-west1
+          - europe-north1
         required: true
       suffix:
         description: 'Deployment name suffix'
