@@ -4,18 +4,17 @@ name: Deploy to Cloud Run
 
 on:
   workflow_dispatch:
-
-inputs:
-  service:
-    description: 'Service ID'
-    required: true
-  region:
-    description: 'Target deployment region'
-    default: 'europe-west1'
-    required: true
-  suffix:
-    description: 'Deployment name suffix'
-    default: 'server-eu-west'
+    inputs:
+      service:
+        description: 'Service ID'
+        required: true
+      region:
+        description: 'Target deployment region'
+        default: 'europe-west1'
+        required: true
+      suffix:
+        description: 'Deployment name suffix'
+        default: 'server-eu-west'
 
 
 outputs:
