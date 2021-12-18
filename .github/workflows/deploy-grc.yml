@@ -21,8 +21,7 @@ on:
         default: 'server-eu-west'
 
 env:
-  GAR_BASE: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}
-  GAR_IMAGE: ${{ env.GAR_BASE }}/${{ secrets.GAR_REGISTRY_NAME }}/auth-me-server:latest
+  GAR_IMAGE: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GAR_REGISTRY_NAME }}/auth-me-server:latest
 
 jobs:
   build:
@@ -42,7 +41,7 @@ jobs:
           service: ${{ github.event.inputs.service }}
           suffix: ${{ github.event.inputs.suffix }}
           region: ${{ github.event.inputs.region }}
-          image: ${{ GAR_IMAGE }}
+          image: ${{ env.GAR_IMAGE }}
 
       - name: Expose deployment URL
         run: echo '::set-output name=deployment_url::${{ steps.gcr_deploy.outputs.url }}'
