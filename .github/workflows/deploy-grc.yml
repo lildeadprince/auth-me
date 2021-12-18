@@ -22,7 +22,7 @@ on:
 
 env:
   GAR_BASE: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}
-
+  GAR_IMAGE: ${{ env.GAR_BASE }}/${{ secrets.GAR_REGISTRY_NAME }}/auth-me-server:latest
 
 jobs:
   build:
@@ -35,18 +35,14 @@ jobs:
         with:
           credentials_json: ${{ secrets.GAR_JSON_KEY }}
 
-      - name: View context attributes
-        uses: actions/github-script@v5
-        with:
-          script: return '${{github.event.inputs.service}}'.split('').join(' '))
-
       - name: Deploy latest at GCR
         id: gcr_deploy
         uses: 'google-github-actions/deploy-cloudrun@v0'
         with:
           service: ${{ github.event.inputs.service }}
+          suffix: ${{ github.event.inputs.suffix }}
           region: ${{ github.event.inputs.region }}
-          image: ${{ env.GAR_BASE }}/${{ secrets.GAR_REGISTRY_NAME }}/auth-me-server:latest
+          image: ${{ GAR_IMAGE }}
 
       - name: Expose deployment URL
-        run: echo '::set-output name=deployment_url::${{ steps.gcr_deploy.outputs.url }}
+        run: echo '::set-output name=deployment_url::${{ steps.gcr_deploy.outputs.url }}'
