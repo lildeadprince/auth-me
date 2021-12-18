@@ -18,6 +18,10 @@ export function redisSessionMiddleware() {
     ttl: 15 * 60, // 15 minutes
   });
 
+  /*
+   * [AWS eu-west (Ireland)] Redis <- 50ms -> Node [GCP eu-north (Finland)]
+   * [AWS eu-west (Ireland)] Redis <- 20ms -> Node [GCP eu-west  (Belgium)]
+   */
   return session({
     store: RedisSessionStoreConnection,
     saveUninitialized: false,
