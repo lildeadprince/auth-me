@@ -8,6 +8,7 @@ on:
       imageName:
         description: 'Name of an image to deploy'
         type: string
+        required: true
       service:
         description: 'Service ID'
         required: true
