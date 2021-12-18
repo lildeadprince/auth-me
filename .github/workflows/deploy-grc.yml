@@ -47,7 +47,7 @@ jobs:
           service: ${{ env.service }}
           suffix: ${{ env.suffix }}
           region: ${{ env.region }}
-          image: {{ env.region }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GAR_REGISTRY_NAME }}/${{ env.imageName }}
+          image: ${{ env.region }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GAR_REGISTRY_NAME }}/${{ env.imageName }}
 
       - name: Expose deployment URL
         run: echo '::set-output name=deployment_url::${{ steps.gcr_deploy.outputs.url }}'
