@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Deploy to Cloud Run
 
 on:
   workflow_dispatch:
@@ -11,8 +11,12 @@ inputs:
     required: true
   region:
     description: 'Target deployment region'
-    default: 'eu-west1'
+    default: 'europe-west1'
     required: true
+  suffix:
+    description: 'Deployment name suffix'
+    default: 'server-eu-west'
+
 
 outputs:
   deployment_url:
