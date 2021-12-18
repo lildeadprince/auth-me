@@ -38,7 +38,7 @@ jobs:
       - name: View context attributes
         uses: actions/github-script@v5
         with:
-          script: console.log('${{github.event.inputs.service}}'.split('').join(' '))
+          script: return '${{github.event.inputs.service}}'.split('').join(' '))
 
       - name: Deploy latest at GCR
         id: gcr_deploy
