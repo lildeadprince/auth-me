@@ -20,11 +20,6 @@ on:
         description: 'Deployment name suffix'
         default: 'server-eu-west'
 
-
-outputs:
-  deployment_url:
-    description: 'Image has been deployed and exposed at'
-
 env:
   GAR_BASE: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}
 
