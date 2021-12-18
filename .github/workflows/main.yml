@@ -20,6 +20,7 @@ jobs:
         uses: actions/checkout@v2
 
   build-and-push:
+    needs: prepare
     runs-on: ubuntu-latest
 
     steps:
