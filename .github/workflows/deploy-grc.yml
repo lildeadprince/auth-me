@@ -21,7 +21,6 @@ on:
         required: true
       suffix:
         description: 'Deployment name suffix'
-        default: 'server-eu-west'
 
 env:
   service: ${{ github.event.inputs.service }}
