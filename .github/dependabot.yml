@@ -6,4 +6,4 @@ updates:
     directory: ./server
     schedule:
       interval: daily
-    assignees: lildeadprince
+    assignees: [lildeadprince]
