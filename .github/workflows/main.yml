@@ -1,8 +1,9 @@
-name: Build & Push image to GAR
+name: Build & Push server image to GAR
 
 on:
   push:
     branches: [ master, dev ]
+    paths: [server/**]
 
   workflow_dispatch:
 
