@@ -5,6 +5,19 @@ name: CI
 on:
   workflow_dispatch:
 
+inputs:
+  service:
+    description: 'Service ID'
+    required: true
+  region:
+    description: 'Target deployment region'
+    default: 'eu-west1'
+    required: true
+
+outputs:
+  deployment_url:
+    description: 'Image has been deployed and exposed at'
+
 env:
   GAR_BASE: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}
 
@@ -24,5 +37,9 @@ jobs:
         id: gcr_deploy
         uses: 'google-github-actions/deploy-cloudrun@v0'
         with:
-          service: ${{ secrets.GCP_PROJECT_ID }}
+          service: ${{ inputs.service }}
+          region: ${{ inputs.region }}
           image: ${{ env.GAR_BASE }}/${{ secrets.GAR_REGISTRY_NAME }}/auth-me-server:latest
+
+      - name: Expose deployment URL
+        run: echo '::set-output name=deployment_url::${{ steps.gcr_deploy.outputs.url }}
