@@ -1,17 +1,23 @@
 {
-  "name": "server",
+  "name": "auth-me-client",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
-  "type": "module",
+  "main": "dist/index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lildeadprince/auth-me.git"
+  },
+  "author": "Xirtid Nepla <avadend.piroserpen@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lildeadprince/auth-me/issues"
+  },
+  "homepage": "https://github.com/lildeadprince/auth-me#readme",
   "scripts": {
     "start": "node ./src/index.js",
     "start:i": "node --inspect-brk ./src/index.js",
     "lint": "eslint ./src/**/*.js --fix"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "connect-redis": "^6.0.0",
     "cors": "^2.8.5",
@@ -22,7 +28,8 @@
     "express-session": "^1.17.2",
     "helmet": "^4.6.0",
     "ioredis": "^4.28.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "prettier": "^2.5.1"
   },
   "devDependencies": {
     "@types/connect-redis": "^0.0.18",

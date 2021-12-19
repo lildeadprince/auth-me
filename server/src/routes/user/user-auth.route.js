@@ -1,18 +1,20 @@
 import { Router } from 'express';
+import Debug from 'debug';
 import { loginUser, registerUser } from './user.controller.js';
 import { findIdentity } from '../../service/user/user.js';
 
+const debug = Debug('route:user-auth');
+
 export const userAuthRoute = new Router();
+
+userAuthRoute.post('/logout', handleLogout);
 
 userAuthRoute.use(authValidationGuard);
 userAuthRoute.post('/register', handleRegister);
 userAuthRoute.post('/login', handleLogin);
-userAuthRoute.post('/logout', (req, res) => {
-  req.session.destroy();
-  res.status(304).send('/');
-});
 
 function authValidationGuard(req, res, next) {
+  // todo npm i -S joi
   if (req.body.username && req.body.username) {
     next();
   } else {
@@ -53,6 +55,18 @@ async function handleLogin(req, res, next) {
   } catch (e) {
     next(e);
   }
+}
+
+function handleLogout(req, res) {
+  req.session.destroy(err => {
+    if (!err) {
+      res.status(304).send('/');
+    } else {
+      debug('Failed to remove user session', err);
+      console.error(err);
+      res.send(400);
+    }
+  });
 }
 
 function populateSession(req, res, user) {

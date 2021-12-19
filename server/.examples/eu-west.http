@@ -1,0 +1,25 @@
+###
+# @name Register a user
+# + receive a session cookie
+POST https://auth-me-server-eu-west-4mpbguipza-ew.a.run.app/user/auth/register
+Content-Type: application/json
+
+{
+  "username": "user3",
+  "password": "pass3"
+}
+
+###
+# @name Login with credentials
+# + receive a session cookie
+POST https://auth-me-server-eu-west-4mpbguipza-ew.a.run.app/user/auth/login
+Content-Type: application/json
+
+{
+  "username": "user2",
+  "password": "pass2"
+}
+
+###
+# @name Get current session user info
+GET https://auth-me-server-eu-west-4mpbguipza-ew.a.run.app/user
