@@ -2,7 +2,6 @@ name: Build & Push server image to GAR
 
 on:
   push:
-    branches: [ master, dev ]
     paths: [server/**]
 
   workflow_dispatch:
@@ -45,7 +44,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build-and-push
-    if: success() && github.ref == 'refs/heads/master'
+    if: success() && github.ref == 'refs/heads/release'
 
     steps:
       - name: GCP login

@@ -22,6 +22,7 @@ on:
         required: true
       suffix:
         description: 'Deployment name suffix'
+        required: false
 
 env:
   service: ${{ github.event.inputs.service }}
