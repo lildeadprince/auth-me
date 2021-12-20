@@ -1,7 +1,7 @@
 ###
 # @name Register a user
 # + receive a session cookie
-POST https://auth-me-server-eu-west-4mpbguipza-ew.a.run.app/user/auth/register
+POST https://auth-me-api.alpenditrix.com//user/auth/register
 Content-Type: application/json
 
 {
@@ -12,7 +12,7 @@ Content-Type: application/json
 ###
 # @name Login with credentials
 # + receive a session cookie
-POST https://auth-me-server-eu-west-4mpbguipza-ew.a.run.app/user/auth/login
+POST https://auth-me-api.alpenditrix.com/user/auth/login
 Content-Type: application/json
 
 {
