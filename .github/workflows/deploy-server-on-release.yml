@@ -3,7 +3,6 @@ name: Build & Push server image to GAR
 on:
   push:
     paths: [server/**]
-
   workflow_dispatch:
 
 env:
