@@ -1,0 +1,7 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-idiomatic-order"],
+  "rules": {
+    "indentation": [2, { "severity": "warning" }],
+    "font-family-name-quotes": "always-where-recommended"
+  }
+}
