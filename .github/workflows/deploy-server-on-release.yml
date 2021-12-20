@@ -11,18 +11,13 @@ env:
   imageName: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GAR_REGISTRY_NAME }}/auth-me-server:latest
 
 jobs:
-  prepare:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout sources
-        uses: actions/checkout@v2
-
   build-and-push:
-    needs: prepare
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
+
+
       - name: Login to GAR
         id: docker_login
         uses: docker/login-action@v1
