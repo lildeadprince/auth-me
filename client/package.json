@@ -7,7 +7,7 @@
     "preview": "vite preview",
     "lint:ts": "    eslint ./src/**/*.ts{x,} --fix",
     "lint:css": "stylelint ./src/**/*.css    --fix",
-    "lint": "    run-p lint:*",
+    "lint": "npm-run-all -p lint:* --aggregate-output",
     "lint:watch:ts": " nodemon --watch src --ext ts,tsx --exec npm run lint:ts",
     "lint:watch:css": "nodemon --watch src --ext css    --exec npm run lint:css",
     "dev-lint": "run-p lint:watch:*"
