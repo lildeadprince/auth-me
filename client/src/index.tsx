@@ -9,6 +9,9 @@ ReactDOM.render(
     Yea
 
     <App />
+
+
+
   </React.StrictMode>,
   document.getElementById('root'),
 );
