@@ -1,0 +1,8 @@
+{
+  "packagesPath": ".",
+  "packages": [
+    "client",
+    "server"
+  ],
+  "addedBehavior": "addAndCommit"
+}

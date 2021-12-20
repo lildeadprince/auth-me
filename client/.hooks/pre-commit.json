@@ -1,0 +1,8 @@
+{
+  "steps": [
+    {
+      "name": "lint+format client code",
+      "command": "npm run lint"
+    }
+  ]
+}
