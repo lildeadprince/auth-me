@@ -2,7 +2,7 @@
   "name": "auth-me-client",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "prepare": "cd .. && husky install ./client/.husky"
@@ -11,6 +11,10 @@
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.11",
     "@vitejs/plugin-react": "^1.1.3",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.5",
+    "postcss-dark-theme-class": "^0.7.3",
+    "postcss-nesting": "^10.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.1",
@@ -27,9 +31,11 @@
     "lint-staged": "^12.1.3",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
+    "stylelint": "^14.1.0",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-config-standard": "^24.0.0",
-    "vite-plugin-eslint": "^1.3.0"
+    "vite-plugin-eslint": "^1.3.0",
+    "vite-plugin-stylelint": "^1.1.0"
   },
   "prettier": {
     "printWidth": 120,
@@ -47,5 +53,13 @@
     "*.css": [
       "stylelint --fix"
     ]
+  },
+  "postcss": {
+    "plugins": {
+      "stylelint": { },
+      "autoprefixer": { },
+      "postcss-nesting": { },
+      "postcss-dark-theme-class": { }
+    }
   }
 }

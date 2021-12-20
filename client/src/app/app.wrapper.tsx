@@ -1,9 +1,12 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { SessionProvider } from './context';
+import { AppThemeProvider, SessionProvider } from './context';
 
 export const AppWrapper: React.FC = ({ children }) => (
-  <SessionProvider>
-    <BrowserRouter>{children}</BrowserRouter>
-  </SessionProvider>
+  // todo allow default args
+  <AppThemeProvider rootElement={document.documentElement} darkSelector={'is-dark'} lightSelector={'is-light'}>
+    <SessionProvider>
+      <BrowserRouter>{children}</BrowserRouter>
+    </SessionProvider>
+  </AppThemeProvider>
 );
