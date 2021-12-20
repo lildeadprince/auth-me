@@ -11,7 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci && npm run build
+
+      - run: npm ci --omit=dev --ignore-scripts
+      - run: npm run build
+
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_AUTH_ME_335406 }}'
