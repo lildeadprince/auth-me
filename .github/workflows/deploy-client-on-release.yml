@@ -19,6 +19,7 @@ jobs:
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
+          entrypoint: ./client
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_AUTH_ME_335406 }}'
           channelId: live
           projectId: auth-me-335406
