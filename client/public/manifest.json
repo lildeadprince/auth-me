@@ -1,0 +1,6 @@
+{
+  "short_name": "Auth Me Demo",
+  "name": "Simple login form demo app (or so they said...)",
+  "start_url": "/me",
+  "description": "An example of a simple login form app written in TypeScript using React served from Firebase with Node.js backend hosted at GCP Cloud Run with pseudo-persistent storage in Redis at Upstash"
+}
