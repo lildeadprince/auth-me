@@ -7,3 +7,9 @@ updates:
     schedule:
       interval: daily
     assignees: [lildeadprince]
+
+  - package-ecosystem: npm
+    directory: ./client
+    schedule:
+      interval: daily
+    assignees: [lildeadprince]
