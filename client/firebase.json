@@ -4,9 +4,33 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
+        "source": "robots.txt",
+        "destination": "/robots.txt"
+      },
+      {
+        "source": "manifest.json",
+        "destination": "/manifest.json"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
-    ]
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+        "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
+      }, {
+        "source": "**/*.@(jpg|jpeg|gif|png)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=7200"
+          }
+        ]
+      }
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false
   }
 }
