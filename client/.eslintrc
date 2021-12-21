@@ -23,5 +23,5 @@
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "no-console": ["error", { "allow": ["error", "warn", "table"] }]
   },
-  "ignorePatterns": ["vite.config.ts"]
+  "ignorePatterns": [ "*.config.[tj]s" ]
 }

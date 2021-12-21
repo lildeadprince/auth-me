@@ -1,2 +1,5 @@
 node_modules
 dist
+
+# rollup-plugin-visualizer deafult output
+stats.html

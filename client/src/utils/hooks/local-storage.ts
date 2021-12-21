@@ -19,6 +19,7 @@ export function useStateFromLocal<S>(key: string, deserialise: (value: string) =
         return deserialise(storedValue) ?? defaultValue;
       } catch (e) {
         console.error('Failed to deserialize value from local storage', key, localStorage.getItem(key), e);
+        return defaultValue;
       }
     } else {
       return defaultValue;
