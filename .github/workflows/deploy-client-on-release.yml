@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - run: npm --prefix client ci --omit=dev --ignore-scripts
-      - run: npm run build
+      - run: npm --prefix client run build
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
