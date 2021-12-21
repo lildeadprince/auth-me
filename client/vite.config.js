@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { visualizer } from 'rollup-plugin-visualizer';
+// import { visualizer } from 'rollup-plugin-visualizer';
 
 // @ts-ignore
 // import stylelint from 'rollup-plugin-stylelint'; // Rollup, 2yo dead, no types
