@@ -11,6 +11,12 @@ import compression from 'vite-plugin-compression';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), compression({algorithm: 'brotliCompress'})],
+  plugins: [
+    react(),
+
+    // though e.g. Firebase will do it anyway, but anyway
+    compression({algorithm: 'brotliCompress'})
+  ],
+
   // build: { rollupOptions: { plugins: [visualizer()] } },
 });
