@@ -15,7 +15,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: docker/setup-buildx-action@v1 # setup default driver to docker-container
+
+      # Launch builds setup manually so driver is set to docker-container (which supports cache exporting)
+      - uses: docker/setup-buildx-action@v1
 
       - name: Login to GAR
         id: docker_login
@@ -34,6 +36,8 @@ jobs:
           push: true
           cache-from: type=registry,ref=${{ env.imageName }}:buildcache
           cache-to: type=registry,ref=${{ env.imageName }}:buildcache,mode=max
+
+      - run: docker images
 
   deploy:
     runs-on: ubuntu-latest
