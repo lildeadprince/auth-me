@@ -7,7 +7,7 @@ on:
 
 env:
   registry: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}
-  imageName: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GAR_REGISTRY_NAME }}/auth-me-server:latest
+  imageName: ${{ secrets.GAR_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GAR_REGISTRY_NAME }}/auth-me-server
 
 jobs:
   build-and-push:
@@ -30,10 +30,10 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./server
-          tags: ${{ env.imageName }}
+          tags: ${{ env.imageName }}:latest
           push: true
-          cache-from: type=registry,ref=${{ env.imageName }}
-          cache-to: type=inline
+          cache-from: type=registry,ref=${{ env.imageName }}:buildcache
+          cache-to: type=registry,ref=${{ env.imageName }}:buildcache,mode=max
 
   deploy:
     runs-on: ubuntu-latest
@@ -53,7 +53,7 @@ jobs:
         with:
           service: auth-me-server-eu-west
           region: ${{ secrets.GAR_REGION }}
-          image: ${{ env.imageName }}
+          image: ${{ env.imageName }}:latest
 
       - name: Expose deployment URL
         run: echo '::set-output name=deployment_url::${{ steps.gcr_deploy.outputs.url }}'
