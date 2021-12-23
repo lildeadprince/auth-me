@@ -2,7 +2,7 @@ name: Build server image
 
 on:
   push:
-    paths: [server/**]
+    paths: [server/**, .github/workflows/deploy-server-on-release.yml]
   workflow_dispatch:
 
 env:
