@@ -1,8 +1,0 @@
-{
-  "name": "auth-me",
-  "private": true,
-  "workspaces": [
-    "client",
-    "server"
-  ]
-}

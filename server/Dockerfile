@@ -2,12 +2,10 @@ FROM node:17-alpine as builder
 
 WORKDIR /usr/src/app
 
-# from workspaces root
-COPY ./package*.json ./
-COPY ./server/package*.json ./server
-RUN npm ci -w server
+COPY package*.json ./
+RUN npm ci
 
-COPY ./server ./server
+COPY ./ ./
 
 #FROM node:17-alpine as runner
 EXPOSE 3000
