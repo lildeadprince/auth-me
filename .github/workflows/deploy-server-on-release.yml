@@ -1,4 +1,4 @@
-name: Build & Push server image to GAR
+name: Build server image
 
 on:
   push:
