@@ -29,7 +29,8 @@ jobs:
         id: docker_build_and_push
         uses: docker/build-push-action@v2
         with:
-          context: ./server
+          context: ./
+          file: ./server/Dockerfile
           tags: ${{ env.imageName }}
           push: true
           cache-from: type=registry,ref=${{ env.imageName }}
