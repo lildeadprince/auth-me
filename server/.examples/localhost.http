@@ -1,7 +1,7 @@
 ###
 # @name Register a user
 # + receive a session cookie
-POST https://auth-me-api.alpenditrix.com/user/auth/register
+POST http://localhost:3000/user/auth/register
 Content-Type: application/json
 
 {
@@ -12,7 +12,7 @@ Content-Type: application/json
 ###
 # @name Login with credentials
 # + receive a session cookie
-POST https://auth-me-api.alpenditrix.com/user/auth/login
+POST http://localhost:3000/user/auth/login
 Content-Type: application/json
 
 {
@@ -22,4 +22,4 @@ Content-Type: application/json
 
 ###
 # @name Get current session user info
-GET https://auth-me-server-eu-west-4mpbguipza-ew.a.run.app/user
+GET http://localhost:3000/user

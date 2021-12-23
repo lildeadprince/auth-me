@@ -48,7 +48,12 @@ async function handleLogin(req, res, next) {
 
     if (user) {
       populateSession(req, res, user);
-      res.status(200).send(`Hi, ${user.username}!`);
+
+      res.status(200).send(
+        `Hi, ${user.username}!`
+          // Force compression (usually should not be used under for `contentSize < MTU`. http_mtu_default=1500
+          .repeat(239),
+      );
     } else {
       res.sendStatus(401);
     }

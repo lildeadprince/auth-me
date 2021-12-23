@@ -1,24 +1,23 @@
 {
-  "name": "auth-me-client",
+  "name": "auth-me-server",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.html",
+  "main": "src/index.js",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lildeadprince/auth-me.git"
   },
   "author": "Xirtid Nepla <avadend.piroserpen@gmail.com>",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lildeadprince/auth-me/issues"
-  },
-  "homepage": "https://github.com/lildeadprince/auth-me#readme",
+  "homepage": "https://auth-me.alpenditrix.com",
   "scripts": {
     "start": "node ./src/index.js",
     "start:i": "node --inspect-brk ./src/index.js",
     "lint": "eslint ./src/**/*.js --fix"
   },
   "dependencies": {
+    "compression-with-brotli": "^1.7.5",
     "connect-redis": "^6.0.0",
     "cors": "^2.8.5",
     "debug": "^4.3.3",
