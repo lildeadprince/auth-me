@@ -37,8 +37,6 @@ jobs:
           cache-from: type=registry,ref=${{ env.imageName }}:buildcache
           cache-to: type=registry,ref=${{ env.imageName }}:buildcache,mode=max
 
-      - run: docker images
-
   deploy:
     runs-on: ubuntu-latest
     needs: build-and-push
