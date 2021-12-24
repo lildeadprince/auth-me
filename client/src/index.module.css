@@ -15,14 +15,14 @@
     --text-color-rgb: var(--white-rgb);
     --background-color: var(--black);
     --background-color-rgb: var(--black-rgb);
-    --bg-image: image-set(url("/assets/img/bg-inv-fhd.jpg") 1x, url("/assets/img/bg-inv2k.jpg") 2x, url("/assets/img/bg-inv4k.jpg") 3x);
+    --bg-image: image-set(url("assets/img/bg-inv-fhd.jpg") 1x, url("/assets/img/bg-inv2k.jpg") 2x, url("/assets/img/bg-inv4k.jpg") 3x);
   }
 
   --text-color: var(--black);
   --text-color-rgb: var(--black-rgb);
   --background-color: var(--white);
   --background-color-rgb: var(--white-rgb);
-  --bg-image: image-set(url("/assets/img/bg-fhd.jpg") 1x, url("/assets/img/bg-2k.jpg") 2x, url("/assets/img/bg-4k.jpg") 3x);
+  --bg-image: image-set(url("assets/img/bg-fhd.jpg") 1x, url("/assets/img/bg-2k.jpg") 2x, url("/assets/img/bg-4k.jpg") 3x);
 
   --border-color: rgba(var(--text-color-rgb), 0.2);
   --border-color-solid: rgba(var(--text-color-rgb), 0.35);
@@ -43,6 +43,10 @@ body {
 :global(#root) {
   width: 100vw;
   height: 100vh;
-  background-image: var(--bg-image);
+  background-image: image-set(url("assets/img/bg-fhd.jpg") 1x, url("/assets/img/bg-2k.jpg") 2x, url("/assets/img/bg-4k.jpg") 3x);
   background-position: center;
+}
+
+:global(:root:not(.is-light) #root) {
+  background-image: image-set(url("assets/img/bg-inv-fhd.jpg") 1x, url("/assets/img/bg-inv2k.jpg") 2x, url("/assets/img/bg-inv4k.jpg") 3x);
 }
