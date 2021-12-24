@@ -1,0 +1,48 @@
+/* === Theme & Root globals (avoid unnecessary mixing with actual components modules) === */
+
+/* == Variables == */
+:global(:root) {
+  font-size: 16px;
+  --white: rgb(251, 251, 251);
+  --white-rgb: 251, 251, 251;
+  --black: rgb(4, 4, 4);
+  --black-rgb: 4, 4, 4;
+
+  /* == Light/Dark theme == */
+  @media (prefers-color-scheme: dark) {
+    /* Not manual Light + System Dark */
+    --text-color: var(--white);
+    --text-color-rgb: var(--white-rgb);
+    --background-color: var(--black);
+    --background-color-rgb: var(--black-rgb);
+    --bg-image: image-set(url("/assets/img/bg-inv-fhd.jpg") 1x, url("/assets/img/bg-inv2k.jpg") 2x, url("/assets/img/bg-inv4k.jpg") 3x);
+  }
+
+  --text-color: var(--black);
+  --text-color-rgb: var(--black-rgb);
+  --background-color: var(--white);
+  --background-color-rgb: var(--white-rgb);
+  --bg-image: image-set(url("/assets/img/bg-fhd.jpg") 1x, url("/assets/img/bg-2k.jpg") 2x, url("/assets/img/bg-4k.jpg") 3x);
+
+  --border-color: rgba(var(--text-color-rgb), 0.2);
+  --border-color-solid: rgba(var(--text-color-rgb), 0.35);
+  --border-color-hover: rgba(var(--text-color-rgb), 0.5);
+  --border-color-solid-hover: rgba(var(--text-color-rgb), 0.7);
+
+  /* todo fix issues with postcss-calc */
+  /*--spacing: 10px;*/
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* == React App container == */
+:global(#root) {
+  width: 100vw;
+  height: 100vh;
+  background-image: var(--bg-image);
+  background-position: center;
+}

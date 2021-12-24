@@ -18,9 +18,15 @@
     "@types/react-dom": "^17.0.11",
     "@vitejs/plugin-react": "^1.1.3",
     "autoprefixer": "^10.4.0",
-    "postcss": "^8.4.5",
+    "avif-in-css": "^0.2.3",
+    "classnames": "^2.3.1",
+    "postcss": "^8.1.5",
+    "postcss-calc": "^8.0.0",
+    "postcss-custom-properties": "^12.0.1",
     "postcss-dark-theme-class": "^0.7.3",
-    "postcss-nesting": "^10.0.3",
+    "postcss-import": "^14.0.2",
+    "postcss-nested": "^5.0.6",
+    "postcss-normalize": "^10.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.1",
@@ -39,7 +45,7 @@
     "prettier": "^2.5.1",
     "rollup-plugin-visualizer": "^5.5.2",
     "stylelint": "^14.1.0",
-    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-css-modules": "^2.3.0",
     "stylelint-config-standard": "^24.0.0",
     "vite-plugin-eslint": "^1.3.0",
     "vite-plugin-stylelint": "^1.1.0"
@@ -60,5 +66,8 @@
     "*.css": [
       "stylelint --fix"
     ]
-  }
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
 }

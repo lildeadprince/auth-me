@@ -1,0 +1,57 @@
+.login {
+  --border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+
+  border: 0;
+  background: rgba(var(--background-color-rgb), .95);
+  border-radius: var(--border-radius);
+
+  /* todo investigate &__form { } -> __form._loginForm_6amk9_1 */
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &__row {
+      width: 100%;
+    }
+
+    &__input {
+      padding: 7px;
+      margin: 10px;
+      border-bottom: 1px solid rgba(var(--text-color-rgb), 0.7);
+    }
+
+
+    &__button {
+      border: 0;
+      border-radius: 0;
+
+      padding: 10px;
+      text-transform: uppercase;
+
+
+      &_register {
+        border-bottom-right-radius: var(--border-radius);
+        border-bottom-left-radius: var(--border-radius);
+        background-color: rgba(var(--text-color-rgb), 0.9);
+        color: rgba(var(--background-color-rgb), .9);
+
+        &:hover {
+          background-color: rgba(var(--text-color-rgb), 0.7);
+        }
+      }
+
+      &_login {
+        background-color: rgba(var(--text-color-rgb), 0.07);
+        color: rgba(var(--text-color-rgb), 0.7);
+
+        &:hover {
+          background-color: rgba(var(--text-color-rgb), 0.12);
+        }
+      }
+    }
+  }
+}
