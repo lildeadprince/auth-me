@@ -3,7 +3,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import compression from 'vite-plugin-compression';
 import Import from 'postcss-import';
-import Stylelint from 'stylelint';
 import Normalize from 'postcss-normalize';
 import Nested from 'postcss-nested';
 import CustomProps from 'postcss-custom-properties';
@@ -45,7 +44,7 @@ export default defineConfig({
     },
     postcss: {
       plugins: [
-        ...(process.env.NODE_ENV !== 'production' ? [Stylelint()] :[]),
+        ...(process.env.NODE_ENV !== 'production' ? [require('stylelint')] :[]),
         Import(),
         Normalize(),
         Nested(),
