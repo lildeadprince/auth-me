@@ -43,10 +43,10 @@ body {
 :global(#root) {
   width: 100vw;
   height: 100vh;
-  background-image: image-set(url("assets/img/bg-fhd.jpg") 1x, url("/assets/img/bg-2k.jpg") 2x, url("/assets/img/bg-4k.jpg") 3x);
+  background-image: image-set(url("/assets/img/bg-fhd.jpg") 1x, url("/assets/img/bg-2k.jpg") 2x, url("/assets/img/bg-4k.jpg") 3x);
   background-position: center;
 }
 
 :global(:root:not(.is-light) #root) {
-  background-image: image-set(url("assets/img/bg-inv-fhd.jpg") 1x, url("/assets/img/bg-inv2k.jpg") 2x, url("/assets/img/bg-inv4k.jpg") 3x);
+  background-image: image-set(url("/assets/img/bg-inv-fhd.jpg") 1x, url("/assets/img/bg-inv2k.jpg") 2x, url("/assets/img/bg-inv4k.jpg") 3x);
 }
