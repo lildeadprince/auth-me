@@ -10,10 +10,16 @@ export const LoginForm: FC = () => {
   return (
     <main className={css.login}>
       <form className={css.login__form}>
-        <div className={css.login__form__row}>
-          <Input className={cx(css.login__form__input)} name="username" required type="email" placeholder="Email" />
+        <div className={cx(css.login__form__row, css.login__form__content)}>
           <Input
-            className={cx(css.login__form__input)}
+            className={cx(css.login__form__content__input)}
+            name="username"
+            required
+            type="email"
+            placeholder="Email"
+          />
+          <Input
+            className={cx(css.login__form__content__input)}
             type="password"
             name="password"
             required
