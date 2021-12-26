@@ -22,36 +22,36 @@ export const LoginFormLayout: FC = () => {
     [],
   );
 
-  const handleSubmitLogin = useCallback(() => {
-    fetch('https://auth-me-api.alpenditrix.com/user/auth/login', {
-      headers: {
-        'content-type': 'application/json',
-      },
-      mode: 'cors',
-      method: 'post',
-      body: JSON.stringify({ username: username.current, password: password.current }),
-    })
-      .then(response => response.json())
-      .then(
-        r => console.warn('success', r),
-        e => console.error('fail', e),
-      );
+  const handleSubmitLogin = useCallback(async () => {
+    try {
+      const response = await fetch('https://auth-me-api.alpenditrix.com/user/auth/login', {
+        headers: {
+          'content-type': 'application/json',
+        },
+        mode: 'cors',
+        method: 'post',
+        body: JSON.stringify({ username: username.current, password: password.current }),
+      });
+      alert('success ' + JSON.stringify(await response.text()));
+    } catch (e) {
+      alert('error ' + String(e));
+    }
   }, [username]);
 
-  const handleSubmitRegistration = useCallback(() => {
-    fetch('https://auth-me-api.alpenditrix.com/user/auth/login', {
-      headers: {
-        'content-type': 'application/json',
-      },
-      mode: 'cors',
-      method: 'post',
-      body: JSON.stringify({ username: username.current, password: password.current }),
-    })
-      .then(response => response.json())
-      .then(
-        r => console.warn('success', r),
-        e => console.error('fail', e),
-      );
+  const handleSubmitRegistration = useCallback(async () => {
+    try {
+      const response = await fetch('https://auth-me-api.alpenditrix.com/user/auth/register', {
+        headers: {
+          'content-type': 'application/json',
+        },
+        mode: 'cors',
+        method: 'post',
+        body: JSON.stringify({ username: username.current, password: password.current }),
+      });
+      alert('success ' + JSON.stringify(await response.text()));
+    } catch (e) {
+      alert('error ' + String(e));
+    }
   }, [password]);
 
   return (
