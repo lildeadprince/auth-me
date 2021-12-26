@@ -11,13 +11,9 @@ type DarkThemeCtx = {
 export const [AppThemeProvider, useAppTheme] = createCtx<DarkThemeCtx, DarkThemeConfig>(
   'DarkTheme',
   darkThemeConfig => {
-    const [theme, setTheme] = useStateFromLocal<ThemeVariant>(
-      'darkTheme',
-      storedTheme => (isKindOfTheme(storedTheme) ? storedTheme : undefined),
-      'auto',
-    );
-
+    const [theme, setTheme] = useStateFromLocal<ThemeVariant>('darkTheme', deserializeStoredTheme, 'auto');
     useLocalPersistence('darkTheme', theme);
+
     useDarkThemeDomUpdates(theme, darkThemeConfig);
 
     return {
@@ -26,3 +22,7 @@ export const [AppThemeProvider, useAppTheme] = createCtx<DarkThemeCtx, DarkTheme
     };
   },
 );
+
+function deserializeStoredTheme(storedTheme: string): ThemeVariant | undefined {
+  return isKindOfTheme(storedTheme) ? storedTheme : undefined;
+}

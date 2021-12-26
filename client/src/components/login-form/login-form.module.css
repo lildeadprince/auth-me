@@ -4,8 +4,12 @@
   flex-direction: column;
 
   border: 0;
-  background: rgba(var(--background-color-rgb), .95);
+  background-color: rgba(var(--background-color-rgb), .94);
   border-radius: var(--border-radius);
+
+  @media (prefers-reduced-transparency: reduce) {
+    background-color: var(--background-color);
+  }
 
   /* todo investigate &__form { } -> __form._loginForm_6amk9_1 */
 

@@ -1,0 +1,52 @@
+.deferredBackgroundContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  /* it's a background after all */
+  z-index: -1;
+
+  .deferredBackgroundContainer__image {
+    opacity: 0;
+
+    img {
+      min-height: 100vh;
+      min-width: 100vw;
+    }
+
+    &_withTransition {
+      @media (prefers-reduced-motion: no-preference) {
+        transition: opacity 500ms ease-out;
+      }
+    }
+
+
+    &.show {
+      opacity: 1;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      /* in dark theme hide the light bg */
+      :global(:root) &_light {
+        display: none;
+      }
+
+      :global(:root) &_dark {
+        display: initial;
+      }
+    }
+
+    /* in light theme hide the dark bg */
+
+    &_dark.show {
+      display: none;
+    }
+  }
+}
