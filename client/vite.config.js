@@ -50,7 +50,7 @@ export default defineConfig({
         Nested(),
         // CustomProps(),
         // Calc, // ???
-        // AvifInCss({ modules: true }), // todo fix broken when nested in module, lurk docs
+        // AvifInCss({ modules: true }),
         Autoprefixer(),
         DarkThemeClass(),
       ],

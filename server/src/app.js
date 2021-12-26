@@ -5,9 +5,10 @@ import { securityMiddleware as security } from './app-init/security.js';
 import { appRouter } from './routes/index.js';
 
 express()
+  .use(security())
   .use(baseSetup())
   .use(redisSessionStorage())
-  .use(security())
+  // .use(security())
 
   .use(appRouter)
 
