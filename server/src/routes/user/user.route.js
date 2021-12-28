@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import Debug from 'debug';
 import { userAuthRoute } from './user-auth.route.js';
 import { updateUser } from './user.controller.js';
 
@@ -10,7 +9,10 @@ userRoute.use('/auth', userAuthRoute);
 userRoute.use(sessionGuard);
 userRoute.put('/data', handlePutUserData);
 userRoute.get('/', (req, res) => {
-  res.send(req.session.user);
+  res.send({
+    email: req.session.user.email,
+    customData: req.session.user.customData,
+  });
 });
 
 function sessionGuard(req, res, next) {

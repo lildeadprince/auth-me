@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import Debug from 'debug';
 import { loginUser, registerUser } from './user.controller.js';
-import { findIdentity } from '../../service/user/user.js';
+import { findIdentity, getUserData } from '../../service/user/user.js';
 
 const debug = Debug('route:user-auth');
 
@@ -26,10 +26,12 @@ function authValidationGuard(req, res, next) {
 async function handleRegister(req, res, next) {
   try {
     if (!(await findIdentity(req.body.email))) {
-      const user = await registerUser(req.body);
-      if (user) {
-        populateSession(req, res, user);
-        res.status(201).send({ user: { email: user.email } });
+      const [id, userData] = await registerUser(req.body);
+      if (id) {
+        const sessionUserData = { id, ...userData };
+        populateSession(req, res, sessionUserData);
+
+        res.status(201).send({ user: userData });
       } else {
         // user should've been returned if no exception were thrown
         res.sendStatus(500);
@@ -44,17 +46,18 @@ async function handleRegister(req, res, next) {
 
 async function handleLogin(req, res, next) {
   try {
-    const user = await loginUser(req.body);
+    const id = await loginUser(req.body);
 
-    if (user) {
-      populateSession(req, res, user);
+    if (id) {
+      const userData = await getUserData(id);
+      populateSession(req, res, { id, ...userData });
 
       res.status(200).send({
-        user,
+        user: userData,
 
-        message: `Hi, ${user.email}!`
-          // Just force compression for testing purposes
-          // (usually should not be used under for `contentSize < MTU`) http_mtu_default=1500
+        message: `Hi, ${userData.email}!`
+          // force brotli compression for testing purposes
+          // (usually compression is not used for content `contentSize < MTU`) http_mtu_default=1500
           .repeat(239),
       });
     } else {

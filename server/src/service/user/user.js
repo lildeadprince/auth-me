@@ -23,17 +23,14 @@ const dbConnection = createRedisClient(
 export async function registerUserIdentity(email, password) {
   const { id, hash } = await createNewIdentity(password);
   const userData = {
-    id,
     email,
+    customData: undefined,
   };
 
-  await addUser(id, hash, {
-    id,
-    email,
-  });
+  await addUser(id, hash, userData);
 
-  // return getUserData(id);
-  return userData;
+  // getUserData(id)
+  return [id, userData];
 }
 
 async function addUser(id, hash, userData) {
@@ -50,19 +47,20 @@ export async function updateUserData(id, userData) {
 
 export async function getUserData(id) {
   if (id) {
-    const userData = await dbConnection.get(`user:${id}`);
-    debug(typeof userData, 'user data', userData);
-    return JSON.parse(userData);
+    return JSON.parse(await dbConnection.get(`user:${id}`));
+  } else {
+    return null;
   }
-  return null;
 }
 
 export async function findAuthenticIdentity(email, password) {
-  const user = await findIdentity(email);
+  // find random-generated salt associated with the string
+  const userId = await findIdentity(email);
 
-  if (user) {
-    if (await checkIdentityAuthenticity(user, password)) {
-      return user;
+  if (userId) {
+    // is registered
+    if (await checkIdentityAuthenticity(userId, password)) {
+      return userId;
     }
     // not authentic identity
     debug('User not authenticated:', email, password);
@@ -75,13 +73,15 @@ export async function findAuthenticIdentity(email, password) {
 }
 
 export async function findIdentity(email) {
-  const userId = await dbConnection.get(`user-id:${email}`);
-  return getUserData(userId);
+  return dbConnection.get(`user-id:${email}`);
 }
 
-export async function checkIdentityAuthenticity(user, password) {
-  const identityHash = await createUserSecretHash(user.id, password);
+export async function checkIdentityAuthenticity(userId, password) {
+  const identityHash = await createUserSecretHash(userId, password);
+
+  // find ID associated with hashed identity
   const identityId = await dbConnection.get(`hash-id:${identityHash}`);
 
-  return identityId === user.id;
+  // if found, then it most likely a hit. But check the ID equality for hash collision
+  return identityId === userId;
 }
