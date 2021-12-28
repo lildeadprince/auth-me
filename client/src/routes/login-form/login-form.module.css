@@ -1,5 +1,4 @@
 .login {
-  --border-radius: 5px;
   display: flex;
   flex-direction: column;
 
@@ -7,11 +6,7 @@
   background-color: rgba(var(--background-color-rgb), .94);
   border-radius: var(--border-radius);
 
-  @media (prefers-reduced-transparency: reduce) {
-    background-color: var(--background-color);
-  }
-
-  /* todo investigate &__form { } -> __form._loginForm_6amk9_1 */
+  position: relative;
 
   &__form {
     display: flex;
@@ -30,7 +25,6 @@
       &__input {
         padding: 7px;
         margin: 10px;
-        border-bottom: 1px solid rgba(var(--text-color-rgb), 0.7);
       }
     }
 
@@ -49,19 +43,33 @@
         background-color: rgba(var(--text-color-rgb), 0.9);
         color: rgba(var(--background-color-rgb), .9);
 
+        &:focus {
+          background-color: rgba(var(--text-color-rgb), 0.8);
+        }
+
         &:hover {
           background-color: rgba(var(--text-color-rgb), 0.7);
+
+          &:active {
+            background-color: rgba(var(--text-color-rgb), 0.5);
+          }
         }
       }
 
       &_login {
-        background-color: rgba(var(--text-color-rgb), 0.07);
+        background-color: rgba(var(--text-color-rgb), 0.1);
         color: rgba(var(--text-color-rgb), 0.7);
 
         &:hover {
-          background-color: rgba(var(--text-color-rgb), 0.12);
+          background-color: rgba(var(--text-color-rgb), 0.2);
+
+          &:active {
+            background-color: rgba(var(--text-color-rgb), 0.4);
+          }
         }
       }
     }
   }
+
+
 }

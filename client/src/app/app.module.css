@@ -6,8 +6,16 @@
   height: 100%;
 
   font-size: 1rem;
+
   :where(button, input) {
     font-size: 1rem;
   }
 
+  &__page {
+    display: flex;
+    width: 100%;
+
+    align-self: center;
+    justify-content: center;
+  }
 }

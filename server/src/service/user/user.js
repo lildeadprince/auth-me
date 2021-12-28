@@ -20,16 +20,16 @@ const dbConnection = createRedisClient(
   process.env.SESSION_REDIS_PORT,
 );
 
-export async function registerUserIdentity(username, password) {
+export async function registerUserIdentity(email, password) {
   const { id, hash } = await createNewIdentity(password);
   const userData = {
     id,
-    username,
+    email,
   };
 
   await addUser(id, hash, {
     id,
-    username,
+    email,
   });
 
   // return getUserData(id);
@@ -39,7 +39,7 @@ export async function registerUserIdentity(username, password) {
 async function addUser(id, hash, userData) {
   await Promise.all([
     dbConnection.set(`hash-id:${hash}`, id),
-    dbConnection.set(`user-id:${userData.username}`, id),
+    dbConnection.set(`user-id:${userData.email}`, id),
     dbConnection.set(`user:${id}`, JSON.stringify(userData)),
   ]);
 }
@@ -57,25 +57,25 @@ export async function getUserData(id) {
   return null;
 }
 
-export async function findAuthenticIdentity(username, password) {
-  const user = await findIdentity(username);
+export async function findAuthenticIdentity(email, password) {
+  const user = await findIdentity(email);
 
   if (user) {
     if (await checkIdentityAuthenticity(user, password)) {
       return user;
     }
     // not authentic identity
-    debug('User not authenticated:', username, password);
+    debug('User not authenticated:', email, password);
   } else {
     // user do not exist
-    debug('User not found for auth:', username);
+    debug('User not found for auth:', email);
   }
 
   return null;
 }
 
-export async function findIdentity(username) {
-  const userId = await dbConnection.get(`user-id:${username}`);
+export async function findIdentity(email) {
+  const userId = await dbConnection.get(`user-id:${email}`);
   return getUserData(userId);
 }
 

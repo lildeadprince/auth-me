@@ -1,11 +1,24 @@
 import cors from 'cors';
 import helmet from 'helmet';
 
-const isProd = process.env.NODE_ENV === 'production';
-
 export function securityMiddleware() {
+  const { CORS_CLIENT_HOST, DEV_CLIENT_HOST } = process.env;
+  const allowedOrigins = [];
+
+  if (CORS_CLIENT_HOST) {
+    allowedOrigins.push(CORS_CLIENT_HOST);
+  }
+  if (DEV_CLIENT_HOST) {
+    allowedOrigins.push(DEV_CLIENT_HOST);
+  }
+
   return [
-    cors({ origin: isProd ? 'https://auth-me.alpenditrix.com' : 'http://localhost:3000' }),
+    // never allow '*'
+    cors({
+      origin: allowedOrigins.length > 0 ? allowedOrigins : 'http://localhost:3000',
+      // cross-origin http-only Express.js cookie-based session
+      credentials: true,
+    }),
     helmet({
       contentSecurityPolicy: {
         useDefaults: true,

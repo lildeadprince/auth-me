@@ -1,0 +1,25 @@
+.spinner {
+  composes: with-color-transition from global;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid var(--background-color);
+  border-bottom-color: transparent;
+  border-left: none;
+  animation: spin 1s linear infinite;
+}
+
+.spinner_inverted {
+  /* filter: invert(1); */
+  border-color: var(--text-color);
+  border-bottom-color: transparent;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}

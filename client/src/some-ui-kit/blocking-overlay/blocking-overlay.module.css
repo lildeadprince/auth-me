@@ -1,0 +1,25 @@
+.blockingOverlay {
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: var(--border-radius);
+  background-color: rgba(var(--text-color-rgb), .5);
+
+  pointer-events: none;
+  opacity: 0;
+  @media (prefers-reduced-motion: no-preference) {
+    transition: opacity 400ms ease-out;
+  }
+
+  &_visible {
+    pointer-events: all;
+    opacity: 1;
+  }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

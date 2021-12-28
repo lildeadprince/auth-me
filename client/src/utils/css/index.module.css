@@ -27,6 +27,7 @@
   --background-color-rgb: var(--white-rgb);
   /*--bg-image: image-set(url("assets/img/bg-fhd.jpg") 1x, url("/assets/img/bg-2k.jpg") 2x, url("/assets/img/bg-4k.jpg") 3x);*/
 
+  --border-radius: 5px;
   --border-color: rgba(var(--text-color-rgb), 0.2);
   --border-color-solid: rgba(var(--text-color-rgb), 0.35);
   --border-color-hover: rgba(var(--text-color-rgb), 0.5);
@@ -40,6 +41,14 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+:global(.with-color-transition) {
+  @media (prefers-reduced-motion: no-preference) {
+    transition-property: background-color, color, border-color;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+  }
 }
 
 /* == React App container == */

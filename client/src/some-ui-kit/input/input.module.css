@@ -6,4 +6,5 @@
   border: 0;
   padding: 0 15px;
 
+  border-bottom: 1px solid rgba(var(--text-color-rgb), 0.7);
 }

@@ -1,0 +1,40 @@
+
+.withExtra {
+  position: relative;
+
+  &__content {
+    position: relative;
+    z-index: 500;
+  }
+
+  &__extra {
+    composes: with-color-transition from global;
+    position: absolute;
+    top: 100%;
+    left: 15%;
+    right: 15%;
+    text-align: center;
+
+    margin: 0 15px;
+    padding: 5px;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    background-color: rgba(var(--background-color-rgb), 0.6);
+    color: rgba(var(--text-color-rgb), 0.6);
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: slide-in 200ms cubic-bezier(.9, .03, .69, .22);
+
+      @keyframes slide-in {
+        from {
+          opacity: 0;
+          transform: translateY(-100%);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}

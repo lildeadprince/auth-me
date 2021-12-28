@@ -1,32 +1,31 @@
-import React from 'react';
+import { FC, memo } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { LoginPage } from '~/routes';
+import { LogoutButton } from '~/app/components/logount-button/logout-button';
+import { ThemePicker } from '~/app/components/theme-picker';
+import { AuthorisedRoute } from '~/routes';
+import { LoginForm } from '~/routes/login-form';
+import { UserInfo } from '~/routes/user-info';
 import css from './app.module.css';
-import { useAppTheme } from './context';
 
-export const AppLayout: React.FC = function () {
-  const { theme, setTheme } = useAppTheme();
-  return (
-    <div className={css.app}>
-      {/* Some header maybe */}
-      {/*<nav></nav>*/}
-      <select
-        style={{ position: 'absolute', top: 20, left: 20 }}
-        name="themeSwitcher"
-        id="themeSwitcher"
-        defaultValue={theme}
-        onChange={event => setTheme(event.target.value)}
-      >
-        <option value="auto">Auto</option>
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-      </select>
+export const AppLayout: FC = memo(() => (
+  // should've maybe had some "App Bar thing for theme picker and log-out button", but that wouldn't change much
 
+  <div className={css.app}>
+    <ThemePicker />
+
+    <main className={css.app__page}>
       <Routes>
-        {/*<Route path="/about">/!* <About /> *!/</Route>*/}
-        {/*<Route path="/users">/!* <Users /> *!/</Route>*/}
-        <Route path="/" element={<LoginPage />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route
+          path="/user"
+          element={
+            <AuthorisedRoute>
+              <LogoutButton />
+              <UserInfo />
+            </AuthorisedRoute>
+          }
+        />
       </Routes>
-    </div>
-  );
-};
+    </main>
+  </div>
+));

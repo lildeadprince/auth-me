@@ -15,27 +15,27 @@ userAuthRoute.post('/login', handleLogin);
 
 function authValidationGuard(req, res, next) {
   // todo npm i -S joi
-  if (req.body.username && req.body.username) {
+  if (req.body.email && req.body.email) {
     next();
   } else {
-    console.error('Bad username or password');
-    res.status(400).send('Bad username or password');
+    console.error('Bad email or password');
+    res.status(400).send({ message: 'Bad email or password' });
   }
 }
 
 async function handleRegister(req, res, next) {
   try {
-    if (!(await findIdentity(req.body.username))) {
+    if (!(await findIdentity(req.body.email))) {
       const user = await registerUser(req.body);
       if (user) {
         populateSession(req, res, user);
-        res.sendStatus(201);
+        res.status(201).send({ user: { email: user.email } });
       } else {
         // user should've been returned if no exception were thrown
         res.sendStatus(500);
       }
     } else {
-      res.status(409).send('Username is already used');
+      res.status(409).send({ message: 'email is already used' });
     }
   } catch (e) {
     next(e);
@@ -49,11 +49,14 @@ async function handleLogin(req, res, next) {
     if (user) {
       populateSession(req, res, user);
 
-      res.status(200).send(
-        `Hi, ${user.username}!`
-          // Force compression (usually should not be used under for `contentSize < MTU`. http_mtu_default=1500
+      res.status(200).send({
+        user,
+
+        message: `Hi, ${user.email}!`
+          // Just force compression for testing purposes
+          // (usually should not be used under for `contentSize < MTU`) http_mtu_default=1500
           .repeat(239),
-      );
+      });
     } else {
       res.sendStatus(401);
     }
@@ -69,7 +72,7 @@ function handleLogout(req, res) {
     } else {
       debug('Failed to remove user session', err);
       console.error(err);
-      res.send(400);
+      res.sendStatus(400);
     }
   });
 }

@@ -16,6 +16,8 @@ jobs:
 
       - run: npm --prefix client ci --omit=dev --ignore-scripts
       - run: npm --prefix client run build
+        env:
+
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:

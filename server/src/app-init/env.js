@@ -9,14 +9,4 @@ if (process.env.NODE_ENV === 'development') {
   debug('env=', process.env.NODE_ENV);
   dotenv.config();
 }
-
-const { NODE_ENV, PORT, SESSION_REDIS_HOST, SESSION_REDIS_PORT, SESSION_REDIS_USER, SESSION_REDIS_PASS } = process.env;
-
-console.table({
-  NODE_ENV,
-  PORT,
-  SESSION_REDIS_HOST,
-  SESSION_REDIS_PORT,
-  SESSION_REDIS_USER,
-  SESSION_REDIS_PASS,
-});
+// console.warn(JSON.stringify(process.env, null, 2));
