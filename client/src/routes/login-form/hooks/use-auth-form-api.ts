@@ -1,6 +1,6 @@
 import { Dispatch, useCallback, useEffect, useState } from 'react';
 import { Session } from '~/app/context';
-import { doFetch } from '~/utils/hooks/use-fetch';
+import { doFetch } from '~/utils/do-fetch';
 
 export type ActionType = 'register' | 'login';
 export type ActionBody = {

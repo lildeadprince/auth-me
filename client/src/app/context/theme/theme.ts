@@ -1,6 +1,6 @@
 import { Dispatch, useCallback } from 'react';
-import { createCtx } from '../../../utils';
-import { useLocalPersistence, useStateFromLocal } from '../../../utils/hooks';
+import { createCtx } from '~/utils';
+import { useLocalPersistence, useStateFromLocal } from '~/utils/hooks';
 import { DarkThemeConfig, isKindOfTheme, ThemeVariant, useDarkThemeDomUpdates } from './use-dark-theme-dom-updates';
 
 type DarkThemeCtx = {

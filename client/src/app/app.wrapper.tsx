@@ -4,12 +4,7 @@ import { DeferredBackground } from '~/app/components/deferred-background/deferre
 import { AppThemeProvider, SessionProvider } from './context';
 
 export const AppWrapper: React.FC = ({ children }) => (
-  <AppThemeProvider
-    rootElement={document.documentElement}
-    darkSelector={'is-dark'}
-    lightSelector={'is-light'}
-    useBgImageSelector={'use-bg'}
-  >
+  <AppThemeProvider rootElement={document.documentElement} darkSelector={'is-dark'} lightSelector={'is-light'}>
     <DeferredBackground>
       <SessionProvider>
         <BrowserRouter>{children}</BrowserRouter>

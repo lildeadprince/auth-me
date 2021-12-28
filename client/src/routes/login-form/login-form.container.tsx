@@ -1,7 +1,7 @@
 import { Dispatch, FC, FormEventHandler, useCallback, useMemo } from 'react';
 import { Session, useSession } from '~/app/context';
-import { ActionType, useAuthFormApi } from '~/routes/login-form/hooks/use-auth-form-api';
-import { useRedirectOnPresentSession } from '~/routes/login-form/hooks/use-redirect-on-present session';
+import { ActionType, useAuthFormApi } from './hooks/use-auth-form-api';
+import { useRedirectOnPresentSession } from './hooks/use-redirect-on-present-session';
 import { LoginFormLayout } from '~/routes/login-form/login-form.layout';
 
 export const LoginFormContainer: FC = () => {
@@ -16,6 +16,7 @@ export const LoginFormContainer: FC = () => {
   return <LoginFormLayout onSubmit={handleSubmitForm} isLoading={isLoading} error={error} />;
 };
 
+// just an extraction of final touches before proceeding to layout
 function useHtmlFormForAuthentication(onSuccess: Dispatch<Session>) {
   const [isLoading, error, dispatchAuth] = useAuthFormApi(onSuccess, onSuccess);
 

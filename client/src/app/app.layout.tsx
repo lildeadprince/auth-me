@@ -1,11 +1,8 @@
 import { FC, memo } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { LogoutButton } from '~/app/components/logount-button/logout-button';
-import { ThemePicker } from '~/app/components/theme-picker';
-import { AuthorisedRoute } from '~/routes';
-import { LoginForm } from '~/routes/login-form';
-import { UserInfo } from '~/routes/user-info';
+import { AuthorisedRoute, LoginForm, UserInfo } from '~/routes';
 import css from './app.module.css';
+import { LogoutButton, ThemePicker } from './components';
 
 export const AppLayout: FC = memo(() => (
   // should've maybe had some "App Bar thing for theme picker and log-out button", but that wouldn't change much

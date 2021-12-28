@@ -1,11 +1,9 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { User, useSession, useSessionControl } from '~/app/context';
-import { doFetch } from '~/utils/hooks/use-fetch';
+import { User, useSessionControl } from '~/app/context';
+import { doFetch } from '~/utils';
 
 export function useSessionValidationOnce() {
   const { setSession, setIsLoading } = useSessionControl();
-  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);

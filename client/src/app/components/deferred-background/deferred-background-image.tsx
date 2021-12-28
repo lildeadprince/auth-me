@@ -1,5 +1,5 @@
 import { FC, useCallback, useEffect, useLayoutEffect, useReducer, useState } from 'react';
-import { DarkBgPicture, LightBgPicture } from '~/app/components/deferred-background/bg-picture';
+import { DarkBgPicture, LightBgPicture } from './bg-picture';
 import { useThemeWithFallbackToSystem } from '~/app/context';
 
 import css from './deferred-background-image.module.css';

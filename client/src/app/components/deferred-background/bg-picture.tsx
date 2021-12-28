@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import classNames from 'classnames/bind';
 import { DispatchWithoutAction, FC } from 'react';
-import css from '~/app/components/deferred-background/deferred-background-image.module.css';
+import css from './deferred-background-image.module.css';
 
 const cx = classNames.bind(css);
 
@@ -11,6 +11,7 @@ type Props = {
   show?: boolean;
 };
 
+/** Actual imageset might be produced better, I guess */
 export const DarkBgPicture: FC<Props> = ({ onLoadImage, withTransition = true, show = true }) => (
   <picture
     onLoad={onLoadImage}
@@ -27,7 +28,7 @@ export const DarkBgPicture: FC<Props> = ({ onLoadImage, withTransition = true, s
     <source srcSet="assets/img/bg-inv-fhd.avif 1x, assets/img/bg-inv-2k.avif 2x, assets/img/bg-inv-4k.avif 3x" type="image/avif" />
     <source srcSet="assets/img/bg-inv-fhd.jpg 1x, assets/img/bg-inv-2k.jpg 2x, assets/img/bg-inv-4k.jpg 3x" />
 
-    <img alt="dark background image of black and white architecture" srcSet="assets/img/bg-inv-fhd.jpg" />
+    <img alt="dark background image of black and white architecture" srcSet="assets/img/bg-inv-fhd.jpg"/>
   </picture>
 );
 
@@ -40,13 +41,13 @@ export const LightBgPicture: FC<Props> = ({ onLoadImage, withTransition = true, 
       [css.show]: show,
     })}
   >
-    <source srcSet="assets/img/bg-4k.avif" media="(min-width: 3840px)" type="image/avif" />
-    <source srcSet="assets/img/bg-4k.jpg" media="(min-width: 3840px )" />
-    <source srcSet="assets/img/bg-.avif 1x, assets/img/bg-4k.avif" media="(min-width: 2560px)" type="image/avif" />
-    <source srcSet="assets/img/bg-.jpg 1x, assets/img/bg-4k.jpg" media="(min-width: 2560px)" />
-    <source srcSet="assets/img/bg-fhd.avif 1x, assets/img/bg-2k.avif 2x, assets/img/bg-4k.avif 3x" type="image/avif" />
-    <source srcSet="assets/img/bg-fhd.jpg 1x, assets/img/bg-2k.jpg 2x, assets/img/bg-4k.jpg 3x" />
+    <source srcSet="assets/img/bg-4k.avif" media="(min-width: 3840px)" type="image/avif"/>
+    <source srcSet="assets/img/bg-4k.jpg" media="(min-width: 3840px )"/>
+    <source srcSet="assets/img/bg-2k.avif 1x, assets/img/bg-4k.avif" media="(min-width: 2560px)" type="image/avif"/>
+    <source srcSet="assets/img/bg-2k.jpg 1x, assets/img/bg-4k.jpg" media="(min-width: 2560px)"/>
+    <source srcSet="assets/img/bg-fhd.avif 1x, assets/img/bg-2k.avif 2x, assets/img/bg-4k.avif 3x" type="image/avif"/>
+    <source srcSet="assets/img/bg-fhd.jpg 1x, assets/img/bg-2k.jpg 2x, assets/img/bg-4k.jpg 3x"/>
 
-    <img alt="dark background image of black and white architecture" srcSet="assets/img/bg-fhd.jpg" />
+    <img alt="dark background image of black and white architecture" srcSet="assets/img/bg-fhd.jpg"/>
   </picture>
 );

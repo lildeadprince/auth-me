@@ -17,6 +17,7 @@ jobs:
       - run: npm --prefix client ci --omit=dev --ignore-scripts
       - run: npm --prefix client run build
         env:
+          VITE_API_HOST: ${{ secrets.API_HOST }}
 
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
