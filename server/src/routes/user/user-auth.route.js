@@ -71,7 +71,7 @@ async function handleLogin(req, res, next) {
 function handleLogout(req, res) {
   req.session.destroy(err => {
     if (!err) {
-      res.status(304).send('/');
+      res.sendStatus(200);
     } else {
       debug('Failed to remove user session', err);
       console.error(err);

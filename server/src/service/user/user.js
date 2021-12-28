@@ -58,6 +58,7 @@ export async function findAuthenticIdentity(email, password) {
   const userId = await findIdentity(email);
 
   if (userId) {
+    debug('Found user:', userId);
     // is registered
     if (await checkIdentityAuthenticity(userId, password)) {
       return userId;

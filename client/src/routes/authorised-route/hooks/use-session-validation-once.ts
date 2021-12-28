@@ -20,6 +20,9 @@ export function useSessionValidationOnce() {
         if (error?.status === 401) {
           // perform local logout
           setSession({ user: undefined });
+          // just in case
+          void doFetch('/user/auth/logout', {}, 'post');
+
           // navigate('/login');
         } else {
           // if server is down, then error messages will be handled in other app areas
