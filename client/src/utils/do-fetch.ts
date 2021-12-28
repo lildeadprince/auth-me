@@ -1,4 +1,4 @@
-const HOST = import.meta.env.VITE_API_HOST;
+const HOST = import.meta.env.VITE_API_HOST || '';
 
 const defaultParams = {
   // mode: 'cors',
