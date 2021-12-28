@@ -1,6 +1,6 @@
-import { FC, useCallback, useEffect, useLayoutEffect, useReducer, useState } from 'react';
-import { DarkBgPicture, LightBgPicture } from './bg-picture';
+import { FC, useCallback, useLayoutEffect, useReducer, useState } from 'react';
 import { useThemeWithFallbackToSystem } from '~/app/context';
+import { LightBgPicture } from './bg-picture';
 
 import css from './deferred-background-image.module.css';
 
@@ -21,12 +21,15 @@ export const DeferredBackground: FC = ({ children }) => {
     setIsUsingTransition();
   }, []);
 
+  /** Used 2 different images originally. Now just using a filter:invert */
+  /*
   // make theme transition pretty as well
   useEffect(() => {
-    /* would've actually want to make it cross-dissolve but it would take enormouns amount of effert e.g. to avoid
-     * double-image load on initial page load etc. */
+    /!* would've actually want to make it cross-dissolve but it would take enormouns amount of effert e.g. to avoid
+     * double-image load on initial page load etc. *!/
     setIsShowImage(false);
   }, [theme]);
+  */
 
   const handleImageLoad = useCallback(() => setIsShowImage(true), []);
 
@@ -35,7 +38,7 @@ export const DeferredBackground: FC = ({ children }) => {
   switch (theme) {
     case 'dark':
       BgPicture = (
-        <DarkBgPicture onLoadImage={handleImageLoad} show={isShowingImage} withTransition={isUsingTransition} />
+        <LightBgPicture onLoadImage={handleImageLoad} show={isShowingImage} withTransition={isUsingTransition} invert />
       );
       break;
     case 'light':

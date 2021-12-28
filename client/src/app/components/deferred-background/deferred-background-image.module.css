@@ -23,30 +23,20 @@
 
     &_withTransition {
       @media (prefers-reduced-motion: no-preference) {
-        transition: opacity 500ms ease-out;
+        transition-property: opacity, filter;
+        transition-duration: 500ms;
+        transition-timing-function: ease-out;
       }
+    }
+
+    &_inverted {
+      /* Using invert on image only. Not using it on fonts and stuff, because of gamma, perceived lightness, etc.*/
+      filter: invert(1);
     }
 
 
     &.show {
       opacity: 1;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      /* in dark theme hide the light bg */
-      :global(:root) &_light {
-        display: none;
-      }
-
-      :global(:root) &_dark {
-        display: initial;
-      }
-    }
-
-    /* in light theme hide the dark bg */
-
-    &_dark.show {
-      display: none;
     }
   }
 }
