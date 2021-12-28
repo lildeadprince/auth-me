@@ -21,10 +21,21 @@
       display: flex;
       flex-direction: column;
       width: 300px;
+    }
 
-      &__input {
-        padding: 7px;
-        margin: 10px;
+    &__input {
+      padding: 7px;
+      margin: 10px;
+    }
+
+    &_touched {
+      .login__form__input:required:invalid {
+        @media (prefers-color-scheme: dark) {
+          :global(:root) & {
+            border-color: darkred;
+          }
+        }
+        border-color: red;
       }
     }
 
