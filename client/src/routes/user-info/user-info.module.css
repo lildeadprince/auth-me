@@ -1,17 +1,15 @@
 .userInfo {
   composes: with-color-transition from global;
-  z-index: 500;
-  width: 480px;
+  display: flex;
+  flex-direction: column;
+
   border: 1px solid rgba(var(--text-color-rgb), 0.5);
   border-top-left-radius: 1.2em 2em;
   border-bottom-right-radius: 2em 1.2em;
 
-  padding: 2em 2em 1em;
-
   background-color: rgba(var(--background-color-rgb), 0.94);
 
-  display: flex;
-  flex-direction: column;
+  padding: 2em 2em 1em;
   gap: 2em;
 
   &__content {
@@ -20,6 +18,9 @@
 
   &__textFieldContainer {
     position: relative;
+
+    /* align to end if flexbox wraps on narrow (mobile) screen */
+    margin-left: auto;
 
     &__floatingSpinner {
       position: absolute;
@@ -36,6 +37,7 @@
   &__valueRow {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 1em;
 

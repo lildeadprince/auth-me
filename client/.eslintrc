@@ -21,7 +21,7 @@
     "no-void": "off",
     "radix": ["error", "as-needed"],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "no-console": ["error", { "allow": ["error", "warn", "table"] }]
+    "no-console": ["error", { "allow": ["error", "warn", "table", "time"] }]
   },
   "ignorePatterns": [ "*.config.[tj]s" ]
 }
