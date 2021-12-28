@@ -33,6 +33,9 @@ function useHtmlFormForAuthentication(onSuccess: Dispatch<Session>) {
       email: (formData.get('email') as string) || '',
       password: (formData.get('password') as string) || '',
     });
+
+    // casually start pre-loaging the next expected route component
+    import('~/routes/user-info');
   }, []); // dispatch is memo
 
   return useMemo(() => {
