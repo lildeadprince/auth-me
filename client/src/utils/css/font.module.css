@@ -1,0 +1,11 @@
+@font-face {
+  font-family: CarroisGothic;
+  src: url("/assets/fonts/CarroisGothicSC-Regular.eot");
+  src: url("/assets/fonts/CarroisGothicSC-Regular.woff2") format("woff2"),
+    url("/assets/fonts/CarroisGothicSC-Regular.woff") format("woff"),
+    url("/assets/fonts/CarroisGothicSC-Regular.ttf") format("truetype");
+}
+
+:global(:where(:root, button, input, select)) {
+  font-family: CarroisGothic, Arial, Helvetica, sans-serif;
+}

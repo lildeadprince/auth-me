@@ -1,3 +1,4 @@
+@import './font.module.css';
 /* === Theme & Root globals (avoid unnecessary mixing with actual components modules) === */
 
 /* == Variables == */
@@ -40,16 +41,21 @@
 body {
   background-color: var(--background-color);
   color: var(--text-color);
-  font-family: Arial, Helvetica, sans-serif;
-}
 
-:global(.with-color-transition) {
-  @media (prefers-reduced-motion: no-preference) {
-    transition-property: background-color, color, border-color;
-    transition-duration: 200ms;
-    transition-timing-function: ease-out;
+  :global(:where(button, input, select)) {
+    font-family: CarroisGothic, Arial, Helvetica, sans-serif;
+  }
+  font-family: CarroisGothic, Arial, Helvetica, sans-serif;
+
+  :global(.with-color-transition) {
+    @media (prefers-reduced-motion: no-preference) {
+      transition-property: background-color, color, border-color;
+      transition-duration: 200ms;
+      transition-timing-function: ease-out;
+    }
   }
 }
+
 
 /* == React App container == */
 :global(#root) {

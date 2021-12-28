@@ -15,7 +15,7 @@ export function securityMiddleware() {
   return [
     // never allow '*'
     cors({
-      origin: allowedOrigins.length > 0 ? allowedOrigins : 'http://localhost:3000',
+      origin: allowedOrigins.length > 0 ? allowedOrigins : ['http://localhost:3000', 'http://localhost:5000'],
       // cross-origin http-only Express.js cookie-based session
       credentials: true,
     }),
