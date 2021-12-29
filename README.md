@@ -1,5 +1,7 @@
 # A rather overdone login form
 
+> Why, Yes I wanted the form to kinda "spill from the sky onto the building", therefore the top side of the form-block melds into the background
+
 ## Ops
 - Repo: Client + Server monorepo
 - CI: GitHub actions set up for auto-deployment with diff tracking
