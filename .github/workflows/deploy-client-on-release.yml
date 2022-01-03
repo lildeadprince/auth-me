@@ -13,9 +13,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - run: npm --prefix client ci --omit=dev --ignore-scripts
-      - run: npm --prefix client run build
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: pnpm
+          cache-dependency-path: client/pnpm-lock.yaml
+      - run: pnpm --prefix=client install --prod --frozen-lockfile --ignore-scripts
+      - run: pnpm --prefix=client build
+#      - run: npm --prefix client ci --omit=dev --ignore-scripts
+#      - run: npm --prefix client run build
         env:
           VITE_API_HOST: ${{ secrets.VITE_API_HOST }}
 

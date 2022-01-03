@@ -6,6 +6,7 @@ COPY package*.json ./
 RUN npm ci
 
 COPY ./ ./
+# RUN npm build
 
 #FROM node:17-alpine as runner
 EXPOSE 3000
