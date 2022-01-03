@@ -24,12 +24,12 @@ export const LightBgPicture: FC<Props> = ({ onLoadImage, withTransition = true, 
     })}
   >
     <source srcSet="assets/img/bg-4k.avif" media="(min-width: 3840px)" type="image/avif"/>
-    <source srcSet="assets/img/bg-4k.jpg" media="(min-width: 3840px )"/>
-    <source srcSet="assets/img/bg-2k.avif 1x, assets/img/bg-4k.avif" media="(min-width: 2560px)" type="image/avif"/>
-    <source srcSet="assets/img/bg-2k.jpg 1x, assets/img/bg-4k.jpg" media="(min-width: 2560px)"/>
-    <source srcSet="assets/img/bg-fhd.avif 1x, assets/img/bg-2k.avif 2x, assets/img/bg-4k.avif 3x" type="image/avif"/>
-    <source srcSet="assets/img/bg-fhd.jpg 1x, assets/img/bg-2k.jpg 2x, assets/img/bg-4k.jpg 3x"/>
+    <source srcSet="assets/img/bg-4k.jpg" media="(min-width: 3840px)"/>
+    <source srcSet="assets/img/bg-2k.avif 1x, assets/img/bg-4k.avif 2x" media="(min-width: 2560px)" type="image/avif"/>
+    <source srcSet="assets/img/bg-2k.jpg 1x, assets/img/bg-4k.jpg 2x" media="(min-width: 2560px)"/>
+    <source srcSet="assets/img/bg-fhd.avif 1x, assets/img/bg-2k.avif 1.5x, assets/img/bg-4k.avif 2x" media="(max-width: 2559px)" type="image/avif"/>
+    <source srcSet="assets/img/bg-fhd.jpg 1x, assets/img/bg-2k.jpg 1.5x, assets/img/bg-4k.jpg 2x" media="(max-width: 2559px)"/>
 
-    <img alt="dark background image of black and white architecture" srcSet="assets/img/bg-fhd.jpg"/>
+    <img alt="dark background image of black and white architecture" src="assets/img/bg-fhd.jpg"/>
   </picture>
 );
