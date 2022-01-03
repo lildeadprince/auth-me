@@ -19,7 +19,7 @@ export const AppLayout: FC = memo(() => (
   <div className={css.app}>
     <ThemePicker />
 
-    <main className={css.app__page}>
+    <div className={css.app__page}>
       <Suspense fallback={<Spinner size={60} invert={true} />}>
         <Routes>
           <Route path="/login" element={<LoginForm />} />
@@ -34,6 +34,6 @@ export const AppLayout: FC = memo(() => (
           />
         </Routes>
       </Suspense>
-    </main>
+    </div>
   </div>
 ));

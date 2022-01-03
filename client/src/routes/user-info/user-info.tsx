@@ -49,13 +49,13 @@ export const UserInfo: FC = () => {
         <main className={css.userInfo}>
           <article className={css.userInfo__content}>
             <div className={css.userInfo__valueRow}>
-              <div className={css.userInfo__valueRow__title}>User email:</div>
+              <h4 className={css.userInfo__valueRow__title}>User email:</h4>
               <div className={css.userInfo__valueRow__value}>{session.user?.email}</div>
             </div>
           </article>
           <article className={css.userInfo__content}>
             <div className={css.userInfo__valueRow}>
-              <div className={css.userInfo__valueRow}>Optional user data:</div>
+              <h4 className={css.userInfo__valueRow__title}>Optional user data:</h4>
               <div className={css.userInfo__textFieldContainer}>
                 {isUpdateInProgress && (
                   <div className={css.userInfo__textFieldContainer__floatingSpinner}>
