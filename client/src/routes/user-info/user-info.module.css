@@ -48,7 +48,10 @@
 
     &__value {
       font-family: monospace;
-      margin: 0 15px;
+      /* 15px = default horiz padding on the "user-data" input => text is aligned by the ends of block */
+      margin: 0 15px 0 auto;
+      word-break: break-all;
+      text-align: end;
     }
 
     &__blinker {
