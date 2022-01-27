@@ -8,10 +8,12 @@
   --white-rgb: 251, 251, 251;
   --black: rgb(4, 4, 4);
   --black-rgb: 4, 4, 4;
+  color-scheme: light;
 
   /* == Light/Dark theme == */
   @media (prefers-color-scheme: dark) {
     /* Not manual Light + System Dark */
+    color-scheme: dark;
     --text-color: var(--white);
     --text-color-rgb: var(--white-rgb);
     --background-color: var(--black);
