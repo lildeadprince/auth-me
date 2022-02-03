@@ -5,11 +5,11 @@ updates:
   - package-ecosystem: npm
     directory: ./server
     schedule:
-      interval: daily
+      interval: monthly
     assignees: [lildeadprince]
 
   - package-ecosystem: npm
     directory: ./client
     schedule:
-      interval: daily
+      interval: monthly
     assignees: [lildeadprince]
