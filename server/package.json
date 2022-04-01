@@ -28,7 +28,7 @@
     "helmet": "^5.0.2",
     "ioredis": "^4.28.5",
     "morgan": "^1.10.0",
-    "prettier": "^2.5.1"
+    "prettier": "^2.6.1"
   },
   "devDependencies": {
     "@types/connect-redis": "^0.0.18",
