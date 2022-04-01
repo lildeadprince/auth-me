@@ -26,7 +26,7 @@
     "postcss-import": "^14.0.2",
     "postcss-nested": "^5.0.6",
     "postcss-normalize": "^10.0.1",
-    "react": "^17.0.2",
+    "react": "^18.0.0",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.1",
     "typescript": "^4.5.4",
