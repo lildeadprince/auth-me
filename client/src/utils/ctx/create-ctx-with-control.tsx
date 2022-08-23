@@ -4,7 +4,7 @@ import { useSafeCtx } from './use-safe-ctx';
 type DefaultProps = Record<string, unknown>;
 
 type CtxWithControl<Value, Control, Props = DefaultProps> = [
-  React.ComponentType<Props>,
+  React.ComponentType<PropsWithChildren<Props>>,
   () => Value,
   () => Control,
   React.Context<Value | undefined>,
@@ -24,7 +24,7 @@ export function createCtxWithControl<Value, Control, Props = DefaultProps>(
   const ContextObject = createContext<Value | undefined>(undefined);
   const ContextControlObject = createContext<Control | undefined>(undefined);
 
-  const ContextWithControlProvider: React.FC<Props> = ({ children, ...props }) => {
+  const ContextWithControlProvider: React.FC<PropsWithChildren<Props>> = ({ children, ...props }) => {
     const [value, controlValue] = useContextValue(props);
 
     return (

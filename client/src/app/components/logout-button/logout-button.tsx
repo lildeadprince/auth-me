@@ -16,7 +16,7 @@ export const LogoutButton: FC = () => {
   }, []);
 
   // start preloading next anticipated route
-  const startPreloadingLoginForm = useCallback(() => import('~/routes/login-form'), []);
+  const startPreloadingLoginForm = useCallback(() => void import('~/routes/login-form'), []);
 
   return (
     <Button className={css.themePicker} onClick={performLogout} onMouseOver={startPreloadingLoginForm}>

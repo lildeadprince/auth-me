@@ -4,7 +4,7 @@ import { useSafeCtx } from './use-safe-ctx';
 type DefaultProps = Record<string, unknown>;
 
 type CreateCtx<Value, Props = DefaultProps> = [
-  React.ComponentType<Props>,
+  React.ComponentType<PropsWithChildren<Props>>,
   () => Value,
   React.Context<Value | undefined>,
 ];
@@ -19,7 +19,7 @@ export function createCtx<Value, Props = DefaultProps>(
 ): Readonly<CreateCtx<Value, Props>> {
   const ContextObject = createContext<Value | undefined>(undefined);
 
-  const ContextProvider: React.FC<Props> = ({ children, ...props }) => {
+  const ContextProvider: React.FC<PropsWithChildren<Props>> = ({ children, ...props }) => {
     const value = useContextValue(props);
     return <ContextObject.Provider value={value}>{children}</ContextObject.Provider>;
   };

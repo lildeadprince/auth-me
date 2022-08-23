@@ -1,4 +1,4 @@
-import { FC, useCallback, useLayoutEffect, useReducer, useState } from 'react';
+import { FC, PropsWithChildren, useCallback, useLayoutEffect, useReducer, useState } from 'react';
 import { useThemeWithFallbackToSystem } from '~/app/context';
 import { LightBgPicture } from './bg-picture';
 
@@ -10,7 +10,7 @@ import css from './deferred-background-image.module.css';
  * Loading of a big BG image will be deferred a bit anyway because of the size, therefore it is worth to defer and
  * show it prettily, while CSS cares about layout coloring *
  */
-export const DeferredBackground: FC = ({ children }) => {
+export const DeferredBackground: FC<PropsWithChildren> = ({ children }) => {
   const theme = useThemeWithFallbackToSystem();
   const [isShowingImage, setIsShowImage] = useState(false);
   const [isUsingTransition, setIsUsingTransition] = useReducer(() => true, false);

@@ -1,7 +1,7 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { useLocalLogout, useSessionValidationOnce } from './hooks';
 
-export const AuthorisedRoute: FC = ({ children }) => {
+export const AuthorisedRoute: FC<PropsWithChildren> = ({ children }) => {
   useSessionValidationOnce();
   useLocalLogout();
 
